@@ -1,0 +1,18 @@
+services:
+  pyspark:
+    container_name: pyspark
+    build: .
+    hostname: pyspark
+    links:
+      - mongodb:mongodb
+    ports:
+      - 8888:8888
+      - 4040:4040
+    volumes:
+      - ./workshop/:/home/jovyan
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:5.0.13
+    ports:
+      - 27017:27017
